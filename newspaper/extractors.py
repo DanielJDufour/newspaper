@@ -20,7 +20,7 @@ import urlparse
 
 from tldextract import tldextract
 
-from . import urls
+import urls
 
 from .utils import ReplaceSequence, StringReplacement, StringSplitter
 

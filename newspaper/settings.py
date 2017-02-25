@@ -31,9 +31,22 @@ NLP_STOPWORDS_EN = os.path.join(
 
 DATA_DIRECTORY = '.newspaper_scraper'
 
-TOP_DIRECTORY = os.path.join(os.path.expanduser("~"), DATA_DIRECTORY)
-if not os.path.exists(TOP_DIRECTORY):
-    os.mkdir(TOP_DIRECTORY)
+# sometimes we can't save in the home directory,
+# so we try the tmp directory
+for path in [os.path.expanduser("~"), "/tmp"]: 
+    errors = []
+    try:
+        TOP_DIRECTORY = os.path.join(path, DATA_DIRECTORY)
+        if not os.path.exists(TOP_DIRECTORY):
+            os.mkdir(TOP_DIRECTORY)
+        break
+    except Exception as error:
+        errors.append(error)
+else:
+    for error in errors:
+        raise error
+    
+   
 
 # Error log
 LOGFILE = os.path.join(TOP_DIRECTORY, 'newspaper_errors_%s.log' % __version__)

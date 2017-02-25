@@ -9,11 +9,11 @@ import copy
 import os
 import glob
 
-from . import images
-from . import network
-from . import nlp
-from . import settings
-from . import urls
+import images
+import network
+import nlp
+import settings
+import urls
 
 from .cleaners import DocumentCleaner
 from .configuration import Configuration
