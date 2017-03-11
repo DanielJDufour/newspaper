@@ -14,9 +14,9 @@ import feedparser
 
 from tldextract import tldextract
 
-from . import network
-from . import urls
-from . import utils
+import network
+import urls
+import utils
 
 from .article import Article
 from .extractors import ContentExtractor
